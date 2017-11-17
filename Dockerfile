@@ -9,7 +9,13 @@ RUN sed -i 's/^[[:space:]]\{,1\}disable[[:space:]]\{1,\}= yes/        disable   
 COPY plugins /usr/lib/check_mk_agent/plugins
 COPY checks /usr/bin
 COPY runit /etc/service
-RUN chmod +x /usr/bin/check_mk_agent
+RUN /bin/chmod +x /usr/bin/check_mk_agent
+RUN /bin/cmod +x /usr/lib/check_mk_agent/check_docker
+RUN /usr/local/bin/pip install 
+RUN /usr/local/bin/pip install --no-cache-dir docker
+RUN DEBIAN_FRONTEND=noninteractive apt-get remove -y pip
+RUN DEBIAN_FRONTEND=noninteractive apt-get autoremove -y
+RUN DEBIAN_FRONTEND=noninteractive apt-get clean -y
 
 EXPOSE 6556
 
