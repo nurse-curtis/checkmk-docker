@@ -1,4 +1,4 @@
-FROM phusion/baseimage
+FROM phusion/baseimage:0.9.22
 
 MAINTAINER alibby@xforty.com
 
@@ -11,10 +11,10 @@ COPY checks /usr/bin
 COPY runit /etc/service
 RUN /bin/chmod +x /usr/bin/check_mk_agent
 RUN /bin/chmod +x /usr/lib/check_mk_agent/plugins/check_docker
-RUN DEBIAN_FRONTEND=noninteractive /usr/bin/pip install docker
-RUN DEBIAN_FRONTEND=noninteractive apt-get remove -y python-pip
-RUN DEBIAN_FRONTEND=noninteractive apt-get autoremove -y
-RUN DEBIAN_FRONTEND=noninteractive apt-get clean -y
+RUN /usr/bin/pip install docker
+RUN apt-get remove -y python-pip
+RUN apt-get autoremove -y
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 EXPOSE 6556
 
