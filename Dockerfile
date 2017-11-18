@@ -12,7 +12,7 @@ COPY runit /etc/service
 RUN /bin/chmod +x /usr/bin/check_mk_agent
 RUN /bin/chmod +x /usr/lib/check_mk_agent/plugins/check_docker
 RUN DEBIAN_FRONTEND=noninteractive /usr/bin/pip install docker
-RUN DEBIAN_FRONTEND=noninteractive apt-get remove -y pip
+RUN DEBIAN_FRONTEND=noninteractive apt-get remove -y python-pip
 RUN DEBIAN_FRONTEND=noninteractive apt-get autoremove -y
 RUN DEBIAN_FRONTEND=noninteractive apt-get clean -y
 
