@@ -4,7 +4,7 @@ MAINTAINER alibby@xforty.com
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get -qq update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -qqy telnet nagios-plugins xinetd docker.io python3.5 python3-pip
-RUN sed -i 's/^[[:space:]]\{,1\}disable[[:space:]]\{1,\}= yes/        disable        = no/' /etc/xinetd.d/check_mk
+# RUN sed -i 's/^[[:space:]]\{,1\}disable[[:space:]]\{1,\}= yes/        disable        = no/' /etc/xinetd.d/check_mk
 
 COPY plugins /usr/lib/check_mk_agent/plugins
 COPY checks /usr/bin
