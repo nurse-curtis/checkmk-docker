@@ -9,7 +9,7 @@ docker run \
   --detach \
   --name=checkmk \
   --hostname=checkmk \
-  --volume=/proc/self/mountstats:/proc/self/mountstats:ro \
+  --volume=/proc/self/mountstats:/var/run/mountstats:ro \
   --volume=/var/run/docker.sock:/var/run/docker.sock \
   --volume=/var/run/system-docker.sock:/var/run/system-docker.sock \
   --label=monitoring=production \
