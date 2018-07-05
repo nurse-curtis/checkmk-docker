@@ -21,7 +21,7 @@ mount | grep nfs >/dev/null 2>&1
 if [ $? -eq 0 ]
 then
 	echo "<<<nfsperf>>>"
-	cat /proc/self/mountstats | awk -- '
+	cat /var/run/mountstats | awk -- '
 BEGIN { N=0 }
 /^device .* (nfs|nfs[0-9]) / { N=N+1; mp[N] = $2 } 
 /bytes:/ { bytes[N] = $0 }
