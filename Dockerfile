@@ -13,8 +13,9 @@ COPY check_mk /etc/check_mk
 COPY agent /tmp
 
 RUN dpkg -i /tmp/check-mk-agent_1.5.0b3-1_all.deb
-RUN chmod +x /usr/lib/check_mk_agent/plugins/check_docker
+RUN chmod +x /usr/lib/check_mk_agent/plugins/*
 RUN pip3 install check_docker
+RUN pip3 install docker
 RUN apt-get remove -y python3-pip
 RUN apt-get autoremove -y
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
